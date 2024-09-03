@@ -6,7 +6,7 @@ from PIL import Image
 # Create your models here.
 
 class ChatGroup(models.Model):
-    group_name = models.CharField(max_length=100, unique=True, default=shortuuid.uuid)
+    group_name = models.CharField(max_length=100, unique=True, default=shortuuid.uuid())
     groupchat_name =  models.CharField(max_length=100, null=True , blank=True)
     admin = models.ForeignKey(User, related_name='groupchats', blank=True, null=True, on_delete=models.SET_NULL)
     users_online = models.ManyToManyField(User, related_name='online_in_groups', blank=True)
@@ -49,3 +49,5 @@ class GroupMessage(models.Model):
             return True 
         except:
             return False
+        
+    

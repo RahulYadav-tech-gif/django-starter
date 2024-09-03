@@ -21,8 +21,8 @@ def chat_view(request, chatroom_name='public-chat'):
         if request.user not in chat_group.members.all():
             raise Http404()
         for member in chat_group.members.all():
-            if member!=request.user:
-                other_user=member
+            if member != request.user:
+                other_user = member
                 break
 
     if chat_group.groupchat_name:
@@ -93,7 +93,7 @@ def create_groupchat(request):
     context = {
         'form':form,
     }
-    return render(request, 'a_rtchat/create_groupchat.html')
+    return render(request, 'a_rtchat/create_groupchat.html', context = context)
 
 @login_required
 def chatroom_edit_view(request, chatroom_name):
